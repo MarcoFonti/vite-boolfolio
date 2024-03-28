@@ -2,10 +2,12 @@
 <script>
 /* IMPORTO APPHEADER */
 import AppHeader from './components/AppHeader.vue';
+/* IMPORTO PROJECTSLIST */
+import ProjectsList from './components/projects/ProjectsList.vue';
 /* IMPORTO AXIOS */
 import axios from 'axios';
 /* URL ENDPOINT */
-const endpoint = 'http://127.0.0.1:8000/api/projects/'; 
+const endpoint = 'http://127.0.0.1:8000/api/projects/';
 
 export default {
     name: 'App',
@@ -14,12 +16,12 @@ export default {
     }),
 
     /* COMPONENTI */
-    components: { AppHeader },
+    components: { AppHeader, ProjectsList },
 
     /* METODI */
-    methods:{
+    methods: {
         /* FUNZIONE PER RICHIEDERE API */
-        apiProjects(){
+        apiProjects() {
             axios.get(endpoint).then((res) => {
                 this.projects = res.data;
             })
@@ -39,7 +41,11 @@ export default {
 
 <!-- HTML -->
 <template>
-    <AppHeader/>
+    <AppHeader />
+    <div class="container">
+        <h1 class="text-danger">Lista Progetti</h1>
+        <ProjectsList :projects_list="projects" />
+    </div>
 </template>
 
 <!-- CSS -->
