@@ -11,7 +11,7 @@ export default {
 <!-- HTML -->
 <template>
     <header>
-        <nav class="navbar navbar-expand-lg bg-secondary">
+        <nav class="navbar navbar-expand-lg bg-secondary mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Boolfolio - API</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,4 +30,5 @@ export default {
 </template>
 
 <!-- CSS -->
-<style scoped></style>
+<style scoped>
+</style>
