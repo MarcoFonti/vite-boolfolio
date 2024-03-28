@@ -1,21 +1,20 @@
 <!-- JS -->
 <script>
+import AppHeader from './components/AppHeader.vue';
 
 export default {
     name: 'App',
-    
+    /* COMPONENTI */
+    components: { AppHeader }
+
 };
 
 </script>
 
 <!-- HTML -->
 <template>
-    <main class="container">
-        <h1>Pippo</h1>
-    </main>
+    <AppHeader/>
 </template>
 
 <!-- CSS -->
-<style scoped>
-
-</style>
+<style></style>
