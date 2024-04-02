@@ -7,7 +7,7 @@ export default {
     name: 'CardList',
 
     /* PROPS */
-    props: { project: Object , isYouSee: Boolean},
+    props: { project: Object, isYouSee: Boolean },
 
     /* COMPUTED */
     computed: {
@@ -46,8 +46,15 @@ export default {
         <div class="card-header d-flex align-items-center justify-content-between">
             <div>
                 <span class="text-uppercase me-3">{{ project.title }}</span>
+                <span v-if="project.technologies.length">
+                    <strong class="text-uppercase"><i class="fa-solid fa-screwdriver-wrench">:</i></strong>
+                        <span v-for="technology in project.technologies" :key="technology.id" class="badge rounded-pill ms-1"
+                            :class="`text-bg-${ technology.color }`">{{ technology.label }}</span>
+                </span>
+                <span v-else>Nessuna</span>
             </div>
-            <RouterLink v-if="!isYouSee" :to="{name: 'project-show', params:{slug: project.slug}}" class="btn btn-primary"><i class="fas fa-eye"></i></RouterLink>
+            <RouterLink v-if="!isYouSee" :to="{ name: 'project-show', params: { slug: project.slug } }"
+                class="btn btn-primary"><i class="fas fa-eye"></i></RouterLink>
         </div>
         <div class="card-body">
             <div class="row">

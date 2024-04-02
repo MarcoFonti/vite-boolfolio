@@ -16,7 +16,7 @@ const router = createRouter({
     /* ROTTE */
     routes:
         [
-            { path: '/', component: AppHome, name: 'home' },
+            { path: '', component: AppHome, name: 'home' }, /* ERRORE SE METTO / */
             { path: '/projects/:slug', component: ProjectShowPage, name: 'project-show' },
             { paht: '/error', component: AppError, name: 'error' },
             { paht: '/:pathMatch(.*)*', redirect: 'error' }
