@@ -2,14 +2,21 @@
 <script>
 /* IMPORTO APPHEADER */
 import AppHeader from './components/AppHeader.vue';
-/* IMPORTO APPHOME */
-import AppHome from './pages/AppHome.vue';
+/* IMPORTO APPLOADER */
+import AppLoader from './components/AppLoader.vue';
+/* IMPORTO STORE */
+import {store} from './data/store';
 
 export default {
     name: 'App',
 
+    /* DATI */
+    data: () => ({
+        store
+    }),
+
     /* COMPONENTI */
-    components: { AppHeader, AppHome },
+    components: { AppHeader, AppLoader },
 };
 
 </script>
@@ -20,6 +27,7 @@ export default {
     <AppHeader />
     <!-- HOME -->
     <main class="container">
+        <AppLoader v-if="store.isLoader"/>
         <RouterView/>
     </main>
 </template>

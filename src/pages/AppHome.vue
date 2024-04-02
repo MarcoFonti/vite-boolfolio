@@ -1,7 +1,7 @@
 <!-- JS -->
 <script>
 /* IMPORTO APPLOADER */
-import AppLoader from '../components/AppLoader.vue';
+import {store} from '../data/store'
 /* IMPORTO PROJECTSLIST */
 import ProjectsList from '../components/projects/ProjectsList.vue';
 /* IMPORTO AXIOS */
@@ -13,7 +13,7 @@ export default {
     name: 'AppHome',
     data: () => ({
         projects: [],
-        isLoader: false
+        store
     }),
 
     /* COMPONENTI */
@@ -23,14 +23,14 @@ export default {
     methods: {
         /* FUNZIONE PER RICHIEDERE API */
         apiProjects() {
-            this.isLoader = true
+            store.isLoader = true
             axios.get(endpoint)
                 .then(res => {
                     this.projects = res.data;
                 }).catch(err => {
                     console.error(err);
                 }).then(() => {
-                    this.isLoader = false;
+                    store.isLoader = false;
                 })
         }
     },
@@ -49,8 +49,7 @@ export default {
 <!-- HTML -->
 <template>
     <main class="container">
-        <AppLoader v-if="isLoader" />
-        <div v-else>
+        <div v-if="!store.isLoader">
             <h1 class="text-danger mt-3">Lista Progetti</h1>
             <ProjectsList :projects_list="projects" />
         </div>
