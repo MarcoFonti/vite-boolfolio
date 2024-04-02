@@ -19,14 +19,13 @@ export default {
 
 <!-- CSS -->
 <style scoped lang="scss">
-
 .loader-overlay {
     position: fixed;
     inset: 0;
     z-index: 1;
 }
 
-.spinner-border{
+.spinner-border {
     width: 200px;
     height: 200px;
 }
