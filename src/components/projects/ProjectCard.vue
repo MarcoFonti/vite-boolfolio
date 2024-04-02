@@ -1,11 +1,13 @@
 <!-- JS -->
 <script>
+import { RouterLink } from 'vue-router';
+
 
 export default {
     name: 'CardList',
 
     /* PROPS */
-    props: { project: Object },
+    props: { project: Object , isYouSee: Boolean},
 
     /* COMPUTED */
     computed: {
@@ -45,7 +47,7 @@ export default {
             <div>
                 <span class="text-uppercase me-3">{{ project.title }}</span>
             </div>
-            <a href="#" class="btn btn-primary"><i class="fas fa-eye"></i></a>
+            <RouterLink v-if="!isYouSee" :to="{name: 'project-show', params:{slug: project.slug}}" class="btn btn-primary"><i class="fas fa-eye"></i></RouterLink>
         </div>
         <div class="card-body">
             <div class="row">

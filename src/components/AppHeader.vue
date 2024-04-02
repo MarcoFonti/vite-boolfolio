@@ -15,7 +15,7 @@ export default {
     <header>
         <nav class="navbar navbar-expand-lg bg-secondary py-3">
             <div class="container-fluid">
-                <RouterLink class="navbar-brand" :to="{ name: 'home' }">Boolfolio - API</RouterLink>
+                <RouterLink class="navbar-brand" :to="{ name: 'home'}">Boolfolio - API</RouterLink>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
