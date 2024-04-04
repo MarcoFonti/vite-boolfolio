@@ -45,13 +45,21 @@ export default {
 
         }
     },
-
+    
     /* ALL'AVVIO DELLA PAGINA */
     created() {
         /* RIESTA FUNZIONE API */
         this.apiTechnologyProject();
     },
-
+    
+    /* AL CLICK SULLA TECNOLOGIA */
+    watch: {
+        '$route' (to, from){
+            if(to.params.slug !== from.params.slug){
+                this.apiTechnologyProject();
+            }
+        }
+    },
 }
 
 </script>
