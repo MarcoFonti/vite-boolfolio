@@ -7,6 +7,7 @@ import AppError from '../pages/AppError.vue';
 import ProjectShowPage from '../pages/ProjectShowPage.vue';
 import TypeProjectsPage from '../pages/TypeProjectsPage.vue';
 import TechnologyProjectsPage from '../pages/TechnologyProjectsPage.vue';
+import AppFormEmail from '../form/AppFormEmail.vue';
 
 /* DEFINISCO LRìE VARIE ROTTE */
 
@@ -19,6 +20,7 @@ const router = createRouter({
     routes:
         [
             { path: '/', component: AppHome, name: 'home' }, 
+            { path: '/contact', component: AppFormEmail, name: 'contact-email' }, 
             { path: '/projects/:slug', component: ProjectShowPage, name: 'project-show' },
             { path: '/types/:slug/projects', component: TypeProjectsPage, name: 'type-projects'},
             { path: '/technologies/:slug/projects', component: TechnologyProjectsPage, name: 'technology-projects'},

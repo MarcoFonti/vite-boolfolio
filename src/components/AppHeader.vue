@@ -25,6 +25,9 @@ export default {
                     <div class="navbar-nav">
                         <RouterLink class="nav-link active" :to="{ name: 'home' }">Home</RouterLink>
                     </div>
+                    <div class="navbar-nav">
+                        <RouterLink class="nav-link active" :to="{ name: 'contact-email' }">Contatti</RouterLink>
+                    </div>
                 </div>
             </div>
         </nav>
