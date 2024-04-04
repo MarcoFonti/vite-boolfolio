@@ -46,10 +46,13 @@ export default {
         <div class="card-header d-flex align-items-center justify-content-between">
             <div>
                 <span class="text-uppercase me-3">{{ project.title }}</span>
-                <span v-if="project.technologies.length">
-                    <strong class="text-uppercase"><i class="fa-solid fa-screwdriver-wrench">:</i></strong>
-                        <span v-for="technology in project.technologies" :key="technology.id" class="badge rounded-pill ms-1"
-                            :class="`text-bg-${ technology.color }`">{{ technology.label }}</span>
+                <strong class="text-uppercase"><i class="fa-solid fa-screwdriver-wrench">:</i></strong>
+                <span v-if="project.technologies?.length">
+                    <RouterLink v-for="technology in project.technologies" :key="technology.id"
+                        :to="{ name: 'technology-projects', params: { slug: technology.slug } }">
+                        <span class="badge rounded-pill ms-1" :class="`text-bg-${technology.color}`">{{
+                    technology.label }}</span>
+                    </RouterLink>
                 </span>
                 <span v-else>Nessuna</span>
             </div>
@@ -65,10 +68,10 @@ export default {
                     <h5 class="card-title mb-2 text-uppercase">{{ project.title }}</h5>
                     <h6 class="card-subtitle mb-3 text-body-secondary">{{ publicationDate }}</h6>
                     <div class="d-flex align-items-center gap-1 mb-2"><strong class="text-uppercase">Tipologia:</strong>
-                    <RouterLink v-if="project.type" :to="{name: 'type-projects', params:{slug: project.type.slug}}">
-                        <span class="badge" :style="{ 'background-color': project.type.color }">{{
+                        <RouterLink v-if="project.type" :to="{ name: 'type-projects', params: { slug: project.type.slug } }">
+                            <span class="badge" :style="{ 'background-color': project.type.color }">{{
                     project.type.label }}</span>
-                    </RouterLink>
+                        </RouterLink>
                         <span v-else>Nessuna</span>
                     </div>
                     <p class="card-text">{{ project.content }}</p>

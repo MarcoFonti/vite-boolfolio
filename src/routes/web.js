@@ -5,7 +5,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import AppHome from '../pages/AppHome.vue';
 import AppError from '../pages/AppError.vue';
 import ProjectShowPage from '../pages/ProjectShowPage.vue';
-import TypeProjectsPage from '../pages/TypeProjectsPage.vue'
+import TypeProjectsPage from '../pages/TypeProjectsPage.vue';
+import TechnologyProjectsPage from '../pages/TechnologyProjectsPage.vue';
 
 /* DEFINISCO LRìE VARIE ROTTE */
 
@@ -20,6 +21,7 @@ const router = createRouter({
             { path: '/', component: AppHome, name: 'home' }, 
             { path: '/projects/:slug', component: ProjectShowPage, name: 'project-show' },
             { path: '/types/:slug/projects', component: TypeProjectsPage, name: 'type-projects'},
+            { path: '/technologies/:slug/projects', component: TechnologyProjectsPage, name: 'technology-projects'},
             { path: '/error', component: AppError, name: 'error' },
             { path: '/:pathMatch(.*)*', redirect: 'error' }
         ]

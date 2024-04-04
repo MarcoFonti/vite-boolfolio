@@ -12,13 +12,13 @@ import { store } from '../data/store'
 const endpoint = 'http://127.0.0.1:8000/api';
 
 export default {
-    name: 'TypeProjectsPage',
+    name: 'TechnologyProjectsPage',
 
     /* DATI */
     data: () => ({
         store,
         project: [],
-        typeLabel: ''
+        technologyLabel: ''
     }),
 
     /* COMPONENTI */
@@ -27,18 +27,18 @@ export default {
     /* METODI */
     methods: {
         /* FUNZIONE PER RICHIEDERE API */
-        async apiTypeProject() {
+        async apiTechnologyProject() {
             store.isLoader = true
-            const res = await axios.get(`${endpoint}/types/${this.$route.params.slug}/projects/`)
+            const res = await axios.get(`${endpoint}/technologies/${this.$route.params.slug}/projects/`)
             try {
-
                 const { projects, label } = res.data;
                 this.project = projects;
-                this.typeLabel = label;
+                this.technologyLabel = label;
+
             } catch (error) {
+
                 console.error(err);
                 this.$router.push({ name: 'error' });
-
             }
 
             store.isLoader = false;
@@ -49,8 +49,9 @@ export default {
     /* ALL'AVVIO DELLA PAGINA */
     created() {
         /* RIESTA FUNZIONE API */
-        this.apiTypeProject();
+        this.apiTechnologyProject();
     },
+
 }
 
 </script>
@@ -59,7 +60,7 @@ export default {
 <template>
     <div class="container">
         <div v-show="!store.isLoader">
-            <h1 class="mt-4 text-danger">Progetti per Tipologia {{ typeLabel }}</h1>
+            <h1 class="mt-4 text-danger">Progetti per Tecnolgie {{ technologyLabel }}</h1>
             <ProjectsList :projects_list="project" />
             <footer class="d-flex justify-content-between align-items-center my-5">
                 <RouterLink :to="{ name: 'home' }" class="btn btn-secondary">

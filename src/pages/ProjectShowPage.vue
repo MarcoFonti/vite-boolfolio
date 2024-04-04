@@ -51,7 +51,7 @@ export default {
 <!-- HTML -->
 <template>
     <div class="container">
-        <div v-if="!isLoader && project">
+        <div v-if="!store.isLoader && project">
             <ProjectCard :project="project" :isYouSee="true" />
             <footer class="d-flex justify-content-between align-items-center my-5">
                 <RouterLink :to="{ name: 'home' }" class="btn btn-secondary">
