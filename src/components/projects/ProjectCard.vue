@@ -65,8 +65,10 @@ export default {
                     <h5 class="card-title mb-2 text-uppercase">{{ project.title }}</h5>
                     <h6 class="card-subtitle mb-3 text-body-secondary">{{ publicationDate }}</h6>
                     <div class="d-flex align-items-center gap-1 mb-2"><strong class="text-uppercase">Tipologia:</strong>
-                        <span v-if="project.type" class="badge" :style="{ 'background-color': project.type.color }">{{
+                    <RouterLink v-if="project.type" :to="{name: 'type-projects', params:{slug: project.type.slug}}">
+                        <span class="badge" :style="{ 'background-color': project.type.color }">{{
                     project.type.label }}</span>
+                    </RouterLink>
                         <span v-else>Nessuna</span>
                     </div>
                     <p class="card-text">{{ project.content }}</p>

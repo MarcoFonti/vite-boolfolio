@@ -2,37 +2,41 @@
 <script>
 /* IMPORTO AXIOS */
 import axios from 'axios';
-/* IMPORTO LA CARD */
-import ProjectCard from '../components/projects/ProjectCard.vue';
+/* IMPORTO LA PROJECTSLIST */
+import ProjectsList from '../components/projects/ProjectsList.vue';
 /* IMPORTO APPLOADER */
 import { store } from '../data/store'
 
 
 /* URL ENDPOINT */
-const endpoint = 'http://127.0.0.1:8000/api/projects/';
+const endpoint = 'http://127.0.0.1:8000/api';
 
 export default {
-    name: 'ProjectShowPage',
+    name: 'TypeProjectsPage',
 
     /* DATI */
     data: () => ({
         store,
-        project: null,
+        project: [],
+        typeLabel: ''
     }),
 
     /* COMPONENTI */
-    components: { ProjectCard },
+    components: { ProjectsList },
 
     /* METODI */
     methods: {
         /* FUNZIONE PER RICHIEDERE API */
-        apiProject() {
+        apiTypeProject() {
             store.isLoader = true
-            axios.get(endpoint + this.$route.params.slug)
+            axios.get(`${endpoint}/types/${this.$route.params.slug}/projects/`)
                 .then(res => {
-                    this.project = res.data;
+                    const { projects, label }  = res.data;
+                    this.project = projects;
+                    this.typeLabel = label;
                 }).catch(err => {
                     console.error(err);
+                    this.$router.push({name: 'error'});
                 }).then(() => {
                     store.isLoader = false;
                 })
@@ -42,7 +46,7 @@ export default {
     /* ALL'AVVIO DELLA PAGINA */
     created() {
         /* RIESTA FUNZIONE API */
-        this.apiProject();
+        this.apiTypeProject();
     },
 }
 
@@ -51,8 +55,9 @@ export default {
 <!-- HTML -->
 <template>
     <div class="container">
+        <h1 class="mt-4 text-danger">Progetti per Tipologia {{ typeLabel }}</h1>
         <div v-if="!isLoader && project">
-            <ProjectCard :project="project" :isYouSee="true" />
+            <ProjectsList :projects_list="project" />
             <footer class="d-flex justify-content-between align-items-center my-5">
                 <RouterLink :to="{ name: 'home' }" class="btn btn-secondary">
                     <i class="fa-solid fa-rotate-left me-2"></i>
